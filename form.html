@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./form.css">
+    <link rel="stylesheet" href="./form.css?v=1.1">
 </head>
 <body>
     <div class="form-container">
@@ -13,17 +13,32 @@
         </div>
         <form class="form">
 
-            <div class="form-group">
-                <label class="form-label">Name
-                    <input class="form-input" name="name" type="text" value="">
+            <div data-group-id="firstName" class="form-group">
+                <label class="input-label">First name
+                    <input class="form-input" name="firstName" type="text" value="" autocomplete="off">
                 </label>
             </div> <!-- Name -->
 
-            <div class="form-group">
-                <label class="form-label">Email
-                    <input class="form-input" name="email" type="text" value="">
+            <div data-group-id="middleName" class="form-group">
+                <label class="input-label">Middle name
+                    <input class="form-input" name="middleName" type="text" value="" autocomplete="off">
+                </label>
+                <span class="error-message">Something went wrong</span>
+            </div> <!-- middle name -->
+
+            <div data-group-id="middleName" class="form-group">
+                <label class="input-label">Surname
+                    <input class="form-input" name="surname" type="text" value="" autocomplete="off">
+                </label>
+            </div> <!-- surname -->
+
+            <div data-group-id="middleName" class="form-group">
+                <label class="input-label">Email
+                    <input class="form-input" name="email" type="text" value="" autocomplete="off">
                 </label>
             </div> <!-- Email -->
+
+            <button type="submit">Submit</button>
 
         </form>
     </div>
