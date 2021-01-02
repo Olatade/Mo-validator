@@ -11,7 +11,7 @@
         <div class="heading">
 
         </div>
-        <form class="form">
+        <form class="form" id="profile-form">
 
             <div data-group-id="firstName" class="form-group">
                 <label class="input-label">First name
@@ -21,28 +21,76 @@
 
             <div data-group-id="middleName" class="form-group">
                 <label class="input-label">Middle name
-                    <input class="form-input" name="middleName" type="text" value="Olatade" autocomplete="off">
+                    <input class="form-input" name="middleName" type="text" value="" autocomplete="off">
                 </label>
-                <span class="error-message">Something went wrong</span>
             </div> <!-- middle name -->
 
-            <div data-group-id="middleName" class="form-group">
+            <div data-group-id="surname" class="form-group">
                 <label class="input-label">Surname
                     <input class="form-input" name="surname" type="text" value="" autocomplete="off">
                 </label>
             </div> <!-- surname -->
 
-            <div data-group-id="middleName" class="form-group">
+            <div data-group-id="email" class="form-group">
                 <label class="input-label">Email
                     <input class="form-input" name="email" type="text" value="" autocomplete="off">
                 </label>
             </div> <!-- Email -->
 
-            <button type="submit">Submit</button>
+            <button class="" type="submit">Submit</button>
 
         </form>
     </div>
 
 <script src="mo_validator.js"></script>
+
+<script>
+    const form = document.getElementById('profile-form');
+    const formConfig = {
+      firstName: {
+        name: 'firstName',
+        displayName: 'first name',
+        tag: 'input',
+        type: 'text',
+        required: true,
+        rules: ['only-alphabets'],
+      },
+      middleName: {
+        name: 'middleName',
+        displayName: 'first name',
+        tag: 'input',
+        type: 'text',
+        required: true,
+        rules: ['only-alphabets'],
+      },
+      surname: {
+        name: 'surname',
+        displayName: 'first name',
+        tag: 'input',
+        type: 'text',
+        required: true,
+        rules: ['only-alphabets'],
+      },
+      email: {
+        name: 'email',
+        displayName: 'first name',
+        tag: 'input',
+        type: 'text',
+        required: true,
+      },
+    };
+
+    const ProfileForm = new MoValidator(form, formConfig);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      ProfileForm.validate();
+      if(ProfileForm.invalidGroups){
+        ProfileForm.errorAction();
+      }
+      // ProfileForm.validate();
+
+    })
+</script>
 </body>
 </html>

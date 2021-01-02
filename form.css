@@ -113,3 +113,6 @@ body{
 .form button:focus{
   outline: none;
 }
+.form button.error{
+  background-color: var(--color-warning);
+}
