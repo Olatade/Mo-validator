@@ -29,9 +29,9 @@ using Mo Validator is quite simple and can be dont in just 3 steps
 - follow HTML structure 
 - all form groups must have a data-group-id that matches its input name
 
-#### 2. Create a validation config for the form
+#### 2. Create a Javascript validation configuration object
 ```javascript
-const formConfig = {
+const validationConfig = {
       firstName: {
         name: 'firstName',
         displayName: 'first name',
@@ -58,26 +58,6 @@ const formConfig = {
 ```javascript
 // the form html 
 const form = document.getElementById('profile-form');
-
-// validation config
-const validationConfig = {
-firstName: {
-name: 'firstName',
-displayName: 'first name',
-tag: 'input',
-type: 'text',
-required: true,
-rules: ['only-alphabets'],
-},
-middleName: {
-name: 'middleName',
-displayName: 'first name',
-tag: 'input',
-type: 'text',
-required: false,
-rules: ['only-alphabets'],
-},
-};
 
 // instantiate Mo Validator and pass in the form and config
 const ProfileForm = new MoValidator(form, validationConfig);
