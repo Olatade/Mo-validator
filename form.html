@@ -46,7 +46,7 @@
 
 <script>
     const form = document.getElementById('profile-form');
-    const formConfig = {
+    const validationConfig = {
       firstName: {
         name: 'firstName',
         displayName: 'first name',
@@ -80,7 +80,7 @@
       },
     };
 
-    const ProfileForm = new MoValidator(form, formConfig);
+    const ProfileForm = new MoValidator(form, validationConfig);
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
