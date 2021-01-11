@@ -85,11 +85,11 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       ProfileForm.validate();
-      if(ProfileForm.invalidGroups){
+      if(ProfileForm.isOk()){
+        console.log('form works')
+      }else{
         ProfileForm.errorAction();
       }
-      // ProfileForm.validate();
-
     })
 </script>
 </body>
