@@ -45,7 +45,7 @@ class MoValidator {
    * checks if the invalid fields array is empty.
    * @returns {boolean} true if there are no invalid fields false if there are invalid fields
    */
-  isOk(){
+  isValid(){
     /**
      * reset valid and invalid fields array
      * check all group validity and refill valid and invalid fields array appropriately
@@ -142,7 +142,7 @@ class MoValidator {
       formGroup.validate();
     });
     // check the invalidFields array to see that it is empty
-    return this.isOk();
+    return this.isValid();
   }
 
   /**

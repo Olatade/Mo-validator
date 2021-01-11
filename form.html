@@ -60,7 +60,7 @@
         displayName: 'first name',
         tag: 'input',
         type: 'text',
-        required: true,
+        required: false,
         rules: ['only-alphabets'],
       },
       surname: {
@@ -85,7 +85,7 @@
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       ProfileForm.validate();
-      if(ProfileForm.isOk()){
+      if(ProfileForm.isValid()){
         console.log('form works')
       }else{
         ProfileForm.errorAction();
