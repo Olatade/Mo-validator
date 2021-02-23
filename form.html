@@ -47,7 +47,25 @@
                     </select>
 
                 </label>
+            </div> <!-- Gender -->
+
+            <div data-group-id="continent" class="form-group">
+                <label class="input-label">Continent
+                    <input class="form-input" name="email" type="text" list="continent" value="" autocomplete="off">
+
+                    <datalist id="continent">
+                        <option value="Africa">
+                        <option value="Europe">
+                        <option value="Antarctica">
+                        <option value="Asia">
+                        <option value="North America">
+                        <option value="South America">
+                    </datalist>
+
+                </label>
             </div> <!-- Email -->
+
+
 
             <button class="" type="submit">Submit</button>
 
@@ -94,6 +112,13 @@
         name: 'gender',
         displayName: 'Gender',
         tag: 'select',
+        type: 'text',
+        required: true,
+      },
+      continent: {
+        name: 'continent',
+        displayName: 'Continent',
+        tag: 'input',
         type: 'text',
         required: true,
       },
