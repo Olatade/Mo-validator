@@ -39,7 +39,13 @@ class MoValidator {
   
         if(formGroup.dataset.groupId === inputName && this.config[inputName].type === 'select'){
           // create a new instance of the class associated with text fields
-          const classInstance = new this.TextInput(formGroup, this.config[inputName]);
+          const classInstance = new this.SelectInput(formGroup, this.config[inputName]);
+          this.addFormGroup(classInstance); // store the initialized class in an array
+        }
+  
+        if(formGroup.dataset.groupId === inputName && this.config[inputName].type === 'date'){
+          // create a new instance of the class associated with text fields
+          const classInstance = new this.DateInput(formGroup, this.config[inputName]);
           this.addFormGroup(classInstance); // store the initialized class in an array
         }
       }
@@ -411,6 +417,14 @@ class MoValidator {
   SelectInput = class SelectInput extends this.Input{
     constructor(formGroup, config){
       super(formGroup, config); // call the parent constructor with new parameters
+    }
+  };
+  
+  DateInput = class DateInput extends this.Input{
+    
+    constructor(formGroup, config){
+      // call the parent constructor with new parameters
+      super(formGroup, config);
     }
   };
 }

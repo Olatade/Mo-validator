@@ -13,6 +13,8 @@
         </div>
         <form class="form" id="profile-form">
 
+
+
             <div data-group-id="firstName" class="form-group">
                 <label class="input-label">First name
                     <input class="form-input" name="firstName" type="text" value="" autocomplete="off">
@@ -63,7 +65,13 @@
                     </datalist>
 
                 </label>
-            </div> <!-- Email -->
+            </div> <!-- continent -->
+
+            <div data-group-id="dateOfBirth" class="form-group">
+                <label class="input-label">Date of Birth
+                    <input class="form-input" name="dateOfBirth" type="date" value="" autocomplete="off">
+                </label>
+            </div> <!-- Date of birth -->
 
 
 
@@ -120,6 +128,13 @@
         displayName: 'Continent',
         tag: 'input',
         type: 'text',
+        required: true,
+      },
+      dateOfBirth: {
+        name: 'dateOfBirth',
+        displayName: 'Date of birth',
+        tag: 'input',
+        type: 'date',
         required: true,
       },
     };
