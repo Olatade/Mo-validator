@@ -73,7 +73,7 @@ body{
   overflow: visible;
 }
 
-.form-group input{
+.form-group input, .form-group select{
   width: 100%;
   display: block;
   color: var(--color-text);
@@ -87,12 +87,13 @@ body{
   box-shadow: inset 0 1px 1px rgba(0,0,0, .05);
   transition: all ease-in-out .2s;
 }
-.form-group input:focus{
+.form-group input:focus, .form-group select:focus{
   outline: none;
 }
 .form-group input::placeholder{
   outline: none;
 }
+
 .form button {
   width: 100%;
   margin-top: 20px;

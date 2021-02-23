@@ -37,6 +37,18 @@
                 </label>
             </div> <!-- Email -->
 
+            <div data-group-id="gender" class="form-group">
+                <label class="input-label">Gender
+                    <select class="form-input" name="gender" autocomplete="off">
+                        <option value="" disabled selected>Select your gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                </label>
+            </div> <!-- Email -->
+
             <button class="" type="submit">Submit</button>
 
         </form>
@@ -75,6 +87,13 @@
         name: 'email',
         displayName: 'first name',
         tag: 'input',
+        type: 'text',
+        required: true,
+      },
+      gender: {
+        name: 'gender',
+        displayName: 'Gender',
+        tag: 'select',
         type: 'text',
         required: true,
       },

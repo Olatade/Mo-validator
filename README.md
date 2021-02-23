@@ -93,3 +93,4 @@ ProfileForm.getInvalidGroups(); // returns an array of all inputs that do not ha
 
 ### Types of input fields currently supported
 - Text
+- Select
