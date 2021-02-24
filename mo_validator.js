@@ -6,7 +6,7 @@
 //   errorMessage.classList.add('error');
 // }, 2000);
 
-class MoValidator {
+export default class MoValidator {
   validGroups = {}; // and array of groups that pass validation
   invalidGroups = {}; // an array of groups that fail validation
   groupClasses = []; // each form group has it's own class. All classes are stored here
@@ -47,6 +47,14 @@ class MoValidator {
           // create a new instance of the class associated with text fields
           const classInstance = new this.DateInput(formGroup, this.config[inputName]);
           this.addFormGroup(classInstance); // store the initialized class in an array
+        }
+  
+        if(formGroup.dataset.groupId === inputName && this.config[inputName].type === 'image'){
+          // create a new instance of the class associated to the field
+          const classInstance = new this.ImageInput(formGroup, this.config[inputName]);
+    
+          // store the initialized  class in an array
+          this.addFormGroup(classInstance);
         }
       }
     })
@@ -427,4 +435,104 @@ class MoValidator {
       super(formGroup, config);
     }
   };
+  
+  ImageInput = class ImageInput extends this.Input{
+    valid = null;
+    value = null;
+    config;
+    constructor(formGroup, config){
+      // call the parent constructor without any parameters
+      // because we don't want the constructor to work on any parameters
+      super();
+      
+      this.config = config;
+      this.name = config.name;
+      this.formGroup = formGroup;
+      
+      // input is the dataSrc value of the img tag in the image form group
+      this.input =  formGroup.querySelector('.c_ui_image_circle').attributes.dataSrc;
+      
+      // the file upload button in the formgroup
+      //we need this to add an event listener to it
+      const file = formGroup.querySelector('.c_ui_save');
+      
+      // when the save button in the image formgroup is clicked, re-validate
+      file.addEventListener('click', () => {
+        this.validate();
+      });
+      
+    }
+    
+    /**
+     * SETS THE FORMGROUP AS VALID IF THE INPUT VALUE IS NOT EMPTY
+     */
+    validate() {
+      if(this.isEmpty()){
+        this.setAsInvalid();
+        this.displayError(`${this.name} is required`);
+      }else{
+        this.removeError();
+        this.valid = true;
+        this.value = this.input.value;
+      }
+    }
+    
+    isEmpty() {
+      // console.log(this.input.attributes.dataSrc.value.length);
+      return this.input.value.length == 0;
+    }
+    
+    /**
+     * INSERTS A SPAN ELEMENT WITH AN ERROR MESSAGE INTO THE FORM GROUP
+     * @param message -
+     */
+    displayError(message){
+      this.removeErrorMessage(); // remove any error message before creating a new one
+      const errorSpan = this.createErrorMessage(message); // create the span element and put the message inside it
+      // insert the span element at the end of the formgroup
+      this.formGroup.insertAdjacentElement('beforeend', errorSpan); // add the span element to the end of the form grou
+      /*
+      Add the error class after two seconds to allow animation
+      animation will not work if the span element and error class is added at
+      the same time
+        the error message is only visible when the form group has an error class
+        the error class animates in the error span
+       */
+      setTimeout( () =>{
+        this.formGroup.classList.add('error');
+        /**
+         * add an error class to the upload-image container
+         * we are doing this becaue we want a red border around the upload image
+         * container and not the form group
+         * we are still adding a class to the form group because wee need
+         * that class to display the error message
+         * children[0] is the uplaod-image container...the first child
+         */
+        this.formGroup.children[0].classList.add('error');
+      }, 200)
+    }
+    
+    /**
+     * sets group validity to false and inputs the false value
+     */
+    setAsInvalid(){
+      this.value = this.input.value;
+      this.valid = false;
+    }
+    
+    removeError(){
+      // remove the error class from the form group so that  the error message will disappear
+      this.formGroup.classList.remove('error');
+      // remove error class from upload-image div so that the red border can be removed
+      this.formGroup.children[0].classList.remove('error');
+      /*
+      Allow 3 seconds to animate out the message element before
+      removing it from the DOM
+       */
+      setTimeout( () =>{
+        this.removeErrorMessage();
+      },300);
+    }
+    
+  }
 }

@@ -5,6 +5,7 @@
     <title>Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./form.css?v=1.1">
+    <link rel="stylesheet" href="./upload_image.css?v=1.1">
 </head>
 <body>
     <div class="form-container">
@@ -13,7 +14,11 @@
         </div>
         <form class="form" id="profile-form">
 
+            <div data-group-id="image" class="form-group">
+                <div data-group-id="upload-image">
 
+                </div>
+            </div>
 
             <div data-group-id="firstName" class="form-group">
                 <label class="input-label">First name
@@ -80,77 +85,7 @@
         </form>
     </div>
 
-<script src="mo_validator.js"></script>
-
-<script>
-    const form = document.getElementById('profile-form');
-    const validationConfig = {
-      firstName: {
-        name: 'firstName',
-        displayName: 'first name',
-        tag: 'input',
-        type: 'text',
-        required: true,
-        rules: ['only-alphabets'],
-      },
-      middleName: {
-        name: 'middleName',
-        displayName: 'first name',
-        tag: 'input',
-        type: 'text',
-        required: false,
-        rules: ['only-alphabets'],
-      },
-      surname: {
-        name: 'surname',
-        displayName: 'Surname',
-        tag: 'input',
-        type: 'text',
-        required: true,
-        rules: ['only-alphabets'],
-      },
-      email: {
-        name: 'email',
-        displayName: 'Email',
-        tag: 'input',
-        type: 'text',
-        required: true,
-      },
-      gender: {
-        name: 'gender',
-        displayName: 'Gender',
-        tag: 'select',
-        type: 'text',
-        required: true,
-      },
-      continent: {
-        name: 'continent',
-        displayName: 'Continent',
-        tag: 'input',
-        type: 'text',
-        required: true,
-      },
-      dateOfBirth: {
-        name: 'dateOfBirth',
-        displayName: 'Date of birth',
-        tag: 'input',
-        type: 'date',
-        required: true,
-      },
-    };
-
-    const ProfileForm = new MoValidator(form, validationConfig);
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      ProfileForm.validate();
-      if(ProfileForm.isValid()){
-        console.log('form works')
-      }else{
-        // make form button turn red and scroll to the first error in the form
-        ProfileForm.errorAction();
-      }
-    })
-</script>
+<!--<script src="Croppie.js"></script>-->
+<script type="module" src="form.js"></script>
 </body>
 </html>
