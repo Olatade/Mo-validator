@@ -77,7 +77,7 @@ form.addEventListener('submit', (e) => {
   if(ProfileForm.isValid()){
     alert('Form is valid')
   }else{
-    //
+    // show error messages
     ProfileForm.errorAction();
   }
 })
@@ -89,8 +89,12 @@ ProfileForm.validate(); // check all inputs for errors and displays errors in th
 ProfileForm.isValid(); // returns true if no error in the form and false if there are errors
 ProfileForm.getInvalidGroups(); // returns an array of all inputs that contain errors
 ProfileForm.getInvalidGroups(); // returns an array of all inputs that do not have errors
+ProfileForm.getInvalidGroups(); // returns an array of all inputs that do not have errors
+ProfileForm.displaySubmitMessage('message goes here') // displays a error message above the submit button
+ProfileForm.removeSubmitMessage() // removes the error message above the submit button
 ```
 
 ### Types of input fields currently supported
 - Text
 - Select
+- Date

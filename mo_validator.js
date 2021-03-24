@@ -19,6 +19,7 @@ class MoValidator {
     this.form = form;
     this.config = formConfig;
     this.formGroups = form.querySelectorAll('.form-group');
+    this.submitMessageContainer = form.querySelector('.submit-message');
 
     // loop through all form groups in the form
     this.formGroups.forEach( formGroup => {
@@ -176,6 +177,40 @@ class MoValidator {
       submitButton.classList.remove('error');
     }, 2000);
   }
+
+
+  displaySubmitMessage(titleText, messageText = ''){
+    this.removeSubmitMessage();
+    this.addSubmitMessage(titleText, messageText);
+    this.submitMessageContainer.classList.add('error');
+  }
+
+  removeSubmitMessage(){
+    try{
+      // remove the error class so the element disapears
+      this.submitMessageContainer.classList.remove('error');
+      this.submitMessageContainer.querySelector('.submit-message__inner').innerHTML = '';
+    }catch(e){
+      // do nothing
+    }
+  }
+
+
+
+  addSubmitMessage(titleText, messageText = ''){
+    // get the submit message inner container
+    const messageContainer = this.submitMessageContainer.querySelector('.submit-message__inner');
+   // add the title
+    const title = document.createElement('h2');
+    title.innerText = 'ERROR'
+    // create the headint title tag
+    const messageTitle = document.createElement('p');
+    messageTitle.innerHTML = titleText;
+
+    messageContainer.insertAdjacentElement('beforeend', title);
+    messageContainer.insertAdjacentElement('beforeend', messageTitle);
+  }
+
 
   /**
    * SCROLLS THE USER'S VIEW TO THE FIRST ERROR FIELD IN THE FORM

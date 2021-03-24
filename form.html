@@ -73,7 +73,11 @@
                 </label>
             </div> <!-- Date of birth -->
 
-
+            <div class="submit-message">
+              
+              <div class="submit-message__inner">
+              </div>
+            </div>
 
             <button class="" type="submit">Submit</button>
 
@@ -149,6 +153,14 @@
       }else{
         // make form button turn red and scroll to the first error in the form
         ProfileForm.errorAction();
+
+        setTimeout( ()=>{
+          ProfileForm.displaySubmitMessage('Something is wrong');
+        }, 2000)
+
+        setTimeout( ()=>{
+          ProfileForm.removeSubmitMessage();
+        }, 5000)
       }
     })
 </script>
